@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .header {
+    /* Добавляем ограничение ширины и центрирование */
+    @apply flex justify-between items-center px-5 fixed w-full max-w-[1400px] left-1/2 -translate-x-1/2;
+    background-color: #02315e;
+  }
+  
+  .header__nav {
+    @apply hidden sm:flex gap-4;
+  }
+
+  .header__nav-list {
+    @apply flex gap-4 flex-col sm:flex-row;
+  }
+
+  /* Стили для гамбургер-меню */
+  .menu-toggle-btn {
+    @apply text-white text-2xl cursor-pointer block sm:hidden;
+  }
+
+  /* Стили для мобильного меню */
+  .header__nav.open {
+    @apply flex flex-col items-center fixed top-[60px] left-0 right-0 bg-[#02315e] w-full py-6 z-50;
+    animation: fadeInDown 0.3s ease-in-out;
+  }
+
+  /* Анимация для выпадающего меню */
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .logo {
+    /* Убираем фиксированную высоту и автоматическую адаптацию */
+    @apply cursor-pointer hover:scale-110 duration-200;
+    /* Теперь адаптация будет происходить с помощью Next.js Image */
+  }
+
+  .header-menu__item {
+    @apply cursor-pointer hover:opacity-85 duration-150 text-sm sm:text-base;
+  }
+  
+
+  .hero-section {
+    @apply bg-[#2F70AF] text-white py-12 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .hero-section__row {
+    /* На мобилках колонки переносятся в один столбец. flex-col — это поведение по умолчанию.
+    На больших экранах (lg) они снова выстраиваются в ряд. */
+    @apply container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12;
+  }
+
+  .hero-section__left {
+    @apply flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 flex-1;
+  }
+
+  .hero-section__right {
+    @apply flex flex-col items-center lg:items-start text-center lg:text-left gap-6 flex-1;
+  }
+
+  .features-section {
+    @apply py-12 md:py-16 bg-gray-50;
+  }
+  
+  .features-section__row {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 mt-8;
+  }
+  
+  .features-section__grid {
+    /* На мобилках — 1 колонка, на sm — 2, на lg — 4. */
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
+  }
+
+  .pricing-section {
+    @apply bg-gray-100 py-12 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .pricing-header {
+    @apply container mx-auto text-center mb-10;
+  }
+  
+  .pricing-grid {
+    /* На мобилках — 1 колонка, на md — 3. */
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto;
+  }
+  
+  .contacts-section {
+    @apply bg-gray-100 py-12 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .form-container {
+    @apply max-w-sm sm:max-w-md mx-auto;
+  }
+  
+  .form-card {
+    @apply bg-white p-6 sm:p-8 rounded-lg shadow-lg;
+  }
+  
+  .form-heading {
+    @apply text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-4 sm:mb-6;
+  }
+  
+  .form-content {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .form-button {
+    @apply w-full bg-[#2F70AF] text-white font-semibold py-2 sm:py-3 px-4 rounded-md shadow-md hover:bg-blue-700 transition-colors duration-300;
+  }
+
+  .footer {
+    @apply bg-gray-800 text-gray-300 py-6 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .footer__container {
+    /* На мобилках элементы располагаются в один столбец */
+    @apply container mx-auto flex flex-col md:flex-row items-center justify-between;
+  }
+  
+  .footer__copyright {
+    @apply text-xs sm:text-sm mb-4 md:mb-0;
+  }
+  
+  .footer__socials {
+    @apply flex items-center space-x-4 sm:space-x-6;
+  }
+  
+  .footer__social-link {
+    @apply text-lg sm:text-xl hover:text-white transition-colors duration-300;
+  }
+}
